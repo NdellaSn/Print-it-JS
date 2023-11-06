@@ -18,47 +18,50 @@ const slides = [
     },
 ];
 
-//on recupère tous les elements avec la class arrow
-const arrows = document.getElementsByClassName("arrow");
-//on recupère un par un les elements du tableau
 
-for (let i = 0; i < arrows.length; i++) {
-    const arrow = arrows[i];
-    //ajouter un evennement de clique a l'element
-    arrow.addEventListener("click", function () {
-        triggerClickArrow(arrow); // this::: moi meme
-    });
-}
-
+function manageDots() {
 // on recupere tous les elements html de class dot
-const dots = document.getElementsByClassName("dot");
-for (let i = 0; i < dots.length; i++) {
-    const dot = dots[i];
-    dot.addEventListener("click", function () {
 
-        document.querySelector(".dot.dot_selected").classList.remove("dot_selected");
-        dot.classList.add("dot_selected");
+    const dots = document.getElementsByClassName("dot");
 
-        const currantSlider = slides[i]; // recuperer le slider correspondant
-        const sliderImg = document.querySelector("#banner .banner-img"); // recuperer l'image du slider
-        sliderImg.src = "./assets/images/slideshow/" + currantSlider.image; // change la source de limage avec celle du slider courant
-        const sliderP = document.querySelector("#banner p"); // recuperer le text du slider
-        sliderP.innerHTML = currantSlider.tagLine; // change le text avec celui du slider courant
+    for (let i = 0; i < dots.length; i++) {
+        const dot = dots[i];
+        dot.addEventListener("click", function () {
 
-    });
+            document.querySelector(".dot.dot_selected").classList.remove("dot_selected");
+            dot.classList.add("dot_selected");
 
+            const currantSlider = slides[i]; // recuperer le slider correspondant
+            const sliderImg = document.querySelector("#banner .banner-img"); // recuperer l'image du slider
+            sliderImg.src = "./assets/images/slideshow/" + currantSlider.image; // change la source de limage avec celle du slider courant
+            const sliderP = document.querySelector("#banner p"); // recuperer le text du slider
+            sliderP.innerHTML = currantSlider.tagLine; // change le text avec celui du slider courant
+
+        });
+
+    }
 }
 
 
+function manageArrows() {
+//on recupère tous les elements avec la class arrow
 
-
-
-
-
+    const arrows = document.getElementsByClassName("arrow");
+    //on recupère un par un les elements du tableau
+    for (let i = 0; i < arrows.length; i++) {
+        const arrow = arrows[i];
+        //ajouter un evennement de clique a l'element
+        arrow.addEventListener("click", function () {
+            triggerClickArrow(arrow);
+        });
+    }
+}
 
 
 //function a executer lors d'un click sur une arrow
 function triggerClickArrow(arrow) {
+    const dots = document.getElementsByClassName("dot");
+
     const left = arrow.classList.contains("arrow_right") ? false : true;
     //on recupere la liste des classes du arrow  sur lequel on a cliqué
     /// et on vérifie s'il contient arrow_right
@@ -103,3 +106,7 @@ function triggerClickArrow(arrow) {
     sliderP.innerHTML = currantSlider.tagLine; // change le text avec celui du slider courant
 
 }
+
+
+manageArrows();
+manageDots();
