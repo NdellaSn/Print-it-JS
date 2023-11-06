@@ -20,7 +20,7 @@ const slides = [
 
 
 function manageDots() {
-// on recupere tous les elements html de class dot
+//on recover all the html elements of class dot
 
     const dots = document.getElementsByClassName("dot");
 
@@ -31,11 +31,11 @@ function manageDots() {
             document.querySelector(".dot.dot_selected").classList.remove("dot_selected");
             dot.classList.add("dot_selected");
 
-            const currantSlider = slides[i]; // recuperer le slider correspondant
-            const sliderImg = document.querySelector("#banner .banner-img"); // recuperer l'image du slider
-            sliderImg.src = "./assets/images/slideshow/" + currantSlider.image; // change la source de limage avec celle du slider courant
-            const sliderP = document.querySelector("#banner p"); // recuperer le text du slider
-            sliderP.innerHTML = currantSlider.tagLine; // change le text avec celui du slider courant
+            const currantSlider = slides[i]; // will retrieve the corresponding sliders
+            const sliderImg = document.querySelector("#banner .banner-img"); // will recover the image of the slider
+            sliderImg.src = "./assets/images/slideshow/" + currantSlider.image; //change the image source with current slider cells
+            const sliderP = document.querySelector("#banner p"); // recover the text of the slider
+            sliderP.innerHTML = currantSlider.tagLine; //  change the text with the current slider
 
         });
 
@@ -44,13 +44,12 @@ function manageDots() {
 
 
 function manageArrows() {
-//on recupère tous les elements avec la class arrow
-
+//on retrieve all elements with the class arrow
     const arrows = document.getElementsByClassName("arrow");
-    //on recupère un par un les elements du tableau
+    //on recovering one of the elements of the tableau
     for (let i = 0; i < arrows.length; i++) {
         const arrow = arrows[i];
-        //ajouter un evennement de clique a l'element
+        //add a clique event to the element
         arrow.addEventListener("click", function () {
             triggerClickArrow(arrow);
         });
@@ -58,7 +57,7 @@ function manageArrows() {
 }
 
 
-//function a executer lors d'un click sur une arrow
+//function to executer with a click on an arrow
 function triggerClickArrow(arrow) {
     const dots = document.getElementsByClassName("dot");
 
